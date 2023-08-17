@@ -1,0 +1,124 @@
+Start to run Python Script
+Traceback (most recent call last):
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/mysql/connector/connection_cext.py", line 246, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'database-2.database-2.cgo3thhmgh0u.us-east-1.rds.amazonaws.com' (-2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/mysql/connector/connection_cext.py", line 94, in __init__
+    self.connect(**kwargs)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/mysql/connector/abstracts.py", line 1052, in connect
+    self._open_connection()
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/mysql/connector/connection_cext.py", line 251, in _open_connection
+    raise errors.get_mysql_exception(msg=exc.msg, errno=exc.errno,
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'database-2.database-2.cgo3thhmgh0u.us-east-1.rds.amazonaws.com' (-2)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/lambda_lab/run.py", line 44, in <module>
+    df = pd.read_sql(sql, con = engine)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/pandas/io/sql.py", line 628, in read_sql
+    return pandas_sql.read_query(
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/pandas/io/sql.py", line 1579, in read_query
+    result = self.execute(*args)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/pandas/io/sql.py", line 1424, in execute
+    return self.connectable.execution_options().execute(*args, **kwargs)
+  File "<string>", line 2, in execute
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/util/deprecations.py", line 402, in warned
+    return fn(*args, **kwargs)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3175, in execute
+    connection = self.connect(close_with_result=True)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3234, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3313, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3283, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2117, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3280, in _wrap_pool_connect
+    return fn()
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 310, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 868, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 476, in checkout
+    rec = pool._do_get()
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 146, in _do_get
+    self._dec_overflow()
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 256, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 371, in __init__
+    self.__connect()
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 666, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 661, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/engine/create.py", line 590, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 597, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/mysql/connector/connection_cext.py", line 94, in __init__
+    self.connect(**kwargs)
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/mysql/connector/abstracts.py", line 1052, in connect
+    self._open_connection()
+  File "/home/ubuntu/lambda_lab/sandbox/lib/python3.8/site-packages/mysql/connector/connection_cext.py", line 251, in _open_connection
+    raise errors.get_mysql_exception(msg=exc.msg, errno=exc.errno,
+sqlalchemy.exc.DatabaseError: (mysql.connector.errors.DatabaseError) 2005 (HY000): Unknown MySQL server host 'database-2.database-2.cgo3thhmgh0u.us-east-1.rds.amazonaws.com' (-2)
+(Background on this error at: https://sqlalche.me/e/14/4xp6)
+PYTHON RUNNING FAILED
+[ERROR:] RETURN CODE:  1
+[ERROR:] REFER TO THE LOG FOR THE REASON FOR THE FAILURE.

@@ -1,0 +1,3 @@
+Start to run Python Script
+upload failed: ./cus_id.json to s3://python-lambda-project/input/cus_id.json Unable to locate credentials
+PROGRAM SUCCEEDED
